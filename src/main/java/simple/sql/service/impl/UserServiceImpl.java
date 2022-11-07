@@ -30,4 +30,12 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
+
+	public User getProjectAuthor() {
+		return userRepository.getProjectAuthor();
+	}
+
+	public User getUserById(Long id) {
+		return userRepository.getUserById(id);
+	}
 }

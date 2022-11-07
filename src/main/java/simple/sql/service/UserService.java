@@ -6,4 +6,6 @@ import simple.sql.model.User;
 
 public interface UserService {
 	List<User> listUsers();
+	User getProjectAuthor();
+	User getUserById(Long id);
 }

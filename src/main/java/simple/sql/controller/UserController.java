@@ -24,4 +24,11 @@ public class UserController {
 		CustomResponse<List<User>> response = new CustomResponse<List<User>>(0, userService.listUsers());
 		return response;
 	}
+	
+	@ApiOperation(value = "根据id查找用户")
+	@RequestMapping("/get")
+	public CustomResponse<User> getUser(Long id) {
+		CustomResponse<User> response = new CustomResponse<User>(0, userService.getUserById(id));
+		return response;
+	}
 }
