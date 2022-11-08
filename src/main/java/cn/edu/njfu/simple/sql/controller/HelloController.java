@@ -1,4 +1,4 @@
-package simple.sql.controller;
+package cn.edu.njfu.simple.sql.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

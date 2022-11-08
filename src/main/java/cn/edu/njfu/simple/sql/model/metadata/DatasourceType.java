@@ -1,10 +1,11 @@
-package simple.sql.model.metadata;
+package cn.edu.njfu.simple.sql.model.metadata;
 
 public enum DatasourceType {
 	
 	MYSQL(0, "mysql"),
 	ORACLE(1, "oracle");
 
+    // 有用吗？没用吧？可以删了吧？
 	private int code;
 	private String name;
 	

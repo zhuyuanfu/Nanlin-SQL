@@ -1,4 +1,4 @@
-package simple.sql.service.impl;
+package cn.edu.njfu.simple.sql.service.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,17 +7,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import simple.sql.dao.UserRepository;
-import simple.sql.model.User;
-import simple.sql.service.UserService;
+import cn.edu.njfu.simple.sql.dao.UserRepository;
+import cn.edu.njfu.simple.sql.model.User;
+import cn.edu.njfu.simple.sql.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
 	
+    @Override
 	public List<User> listUsers() {
 		List<User> result = new ArrayList<User>();
 		
@@ -30,10 +30,12 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+    @Override
 	public User getProjectAuthor() {
 		return userRepository.getProjectAuthor();
 	}
 
+    @Override
 	public User getUserById(Long id) {
 		return userRepository.getUserById(id);
 	}

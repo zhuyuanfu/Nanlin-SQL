@@ -1,4 +1,4 @@
-package simple.sql.model;
+package cn.edu.njfu.simple.sql.model;
 
 import java.time.LocalDateTime;
 

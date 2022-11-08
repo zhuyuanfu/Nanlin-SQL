@@ -1,4 +1,4 @@
-package simple.sql;
+package cn.edu.njfu.simple.sql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

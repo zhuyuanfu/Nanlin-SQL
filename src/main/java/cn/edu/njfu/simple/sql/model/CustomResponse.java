@@ -1,9 +1,9 @@
-package simple.sql.model;
+package cn.edu.njfu.simple.sql.model;
 
 /**
  * 
- * ret=0代表服务器没问题，返回了正确的数据；
- * ret=-1代表服务器有问题，返回了错误信息
+ * ret =  0 代表服务器没问题，返回了正确的数据；
+ * ret = -1 代表服务器有问题，返回了错误信息
  * @author zhuyuanfu
  *
  * @param <T>

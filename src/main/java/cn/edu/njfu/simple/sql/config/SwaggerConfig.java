@@ -1,4 +1,4 @@
-package simple.sql.config;
+package cn.edu.njfu.simple.sql.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
