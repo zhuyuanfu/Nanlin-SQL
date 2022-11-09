@@ -21,10 +21,10 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/metadata")
 public class MetadataMiningController {
 	
-	private static Logger logger = LoggerFactory.getLogger(MetadataMiningController.class);
+    private static Logger logger = LoggerFactory.getLogger(MetadataMiningController.class);
 	
-	@Autowired
-	private MetadataMiningService metadataMiningService;
+    @Autowired
+    private MetadataMiningService metadataMiningService;
 	
     /**
      * 手动采集一次元数据
