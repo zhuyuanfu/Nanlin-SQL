@@ -1,4 +1,4 @@
-package cn.edu.njfu.simple.sql.model.metadata;
+package cn.edu.njfu.simple.sql.metadata.model;
 
 import java.time.LocalDateTime;
 

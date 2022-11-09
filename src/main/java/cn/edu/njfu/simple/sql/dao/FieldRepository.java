@@ -7,13 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import cn.edu.njfu.simple.sql.metadata.model.Database;
+import cn.edu.njfu.simple.sql.metadata.model.Field;
 
-public interface DatabaseRepository extends CrudRepository<Database, Long>{
-    @Query("select t from `database` t where t.isDeleted = false")
-    List<Database> listUndeletedDatabases();
+public interface FieldRepository extends CrudRepository<Field, Long>{
+    @Query("select t from field t where t.isDeleted = false")
+    List<Field> listUndeletedFields();
     
     @Modifying
-    @Query("update `database` t set t.isDeleted = true where t.id = :id")
+    @Query("update field t set t.isDeleted = true where t.id = :id")
     Boolean falseDeleteById(@Param("id") Long id);
 }

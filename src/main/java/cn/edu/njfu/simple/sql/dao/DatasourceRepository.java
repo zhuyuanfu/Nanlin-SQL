@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import cn.edu.njfu.simple.sql.model.metadata.Datasource;
+import cn.edu.njfu.simple.sql.metadata.model.Datasource;
 
 public interface DatasourceRepository extends CrudRepository<Datasource, Long>{
 	

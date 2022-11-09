@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.edu.njfu.simple.sql.dao.DatasourceRepository;
-import cn.edu.njfu.simple.sql.model.metadata.Datasource;
+import cn.edu.njfu.simple.sql.metadata.model.Datasource;
 import cn.edu.njfu.simple.sql.service.DatasourceService;
 
 @Service

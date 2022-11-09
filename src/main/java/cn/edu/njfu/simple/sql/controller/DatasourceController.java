@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.edu.njfu.simple.sql.metadata.model.Datasource;
+import cn.edu.njfu.simple.sql.metadata.model.DatasourceType;
 import cn.edu.njfu.simple.sql.model.CustomResponse;
-import cn.edu.njfu.simple.sql.model.metadata.Datasource;
-import cn.edu.njfu.simple.sql.model.metadata.DatasourceType;
 import cn.edu.njfu.simple.sql.service.DatasourceService;
 import io.swagger.annotations.ApiOperation;
 
