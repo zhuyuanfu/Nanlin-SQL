@@ -7,14 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import cn.edu.njfu.simple.sql.metadata.model.Datasource;
+import cn.edu.njfu.simple.sql.metadata.model.MetaDatasource;
 
-public interface DatasourceRepository extends CrudRepository<Datasource, Long>{
+public interface DatasourceRepository extends CrudRepository<MetaDatasource, Long>{
 	
-    @Query("select t from datasource t where t.isDeleted = false")
-    List<Datasource> listUndeletedDatasources();
+    @Query("select t from meta_datasource t where t.isDeleted = false")
+    List<MetaDatasource> listUndeletedDatasources();
     
     @Modifying
-	@Query("update datasource t set t.isDeleted = true where t.id = :id")
+	@Query("update meta_datasource t set t.isDeleted = true where t.id = :id")
 	Boolean falseDeleteById(@Param("id") Long id);
 }

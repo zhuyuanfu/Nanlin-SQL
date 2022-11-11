@@ -2,8 +2,8 @@ package cn.edu.njfu.simple.sql.service;
 
 import java.util.List;
 
-import cn.edu.njfu.simple.sql.metadata.model.Database;
-import cn.edu.njfu.simple.sql.metadata.model.Datasource;
+import cn.edu.njfu.simple.sql.metadata.model.MetaDatabase;
+import cn.edu.njfu.simple.sql.metadata.model.MetaDatasource;
 import cn.edu.njfu.simple.sql.metadata.model.Field;
 import cn.edu.njfu.simple.sql.metadata.model.Table;
 import cn.edu.njfu.simple.sql.model.CustomResponse;
@@ -12,9 +12,9 @@ public interface MetadataMiningService {
 
     CustomResponse<String> mineCompletely();
     
-    List<Database> mineDatabases(Datasource datasource);
+    void mineDatabases(MetaDatasource datasource);
     
-    List<Table> mineTables(Datasource datasource, Database database);
+    void mineTables(MetaDatasource datasource, MetaDatabase database);
     
-    List<Field> mineFields(Datasource datasource, Database database, Table table);
+    void mineFields(MetaDatasource datasource, MetaDatabase database, Table table);
 }

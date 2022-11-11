@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.edu.njfu.simple.sql.metadata.model.Datasource;
+import cn.edu.njfu.simple.sql.metadata.model.MetaDatasource;
 import cn.edu.njfu.simple.sql.metadata.model.DatasourceType;
 import cn.edu.njfu.simple.sql.model.CustomResponse;
 import cn.edu.njfu.simple.sql.service.DatasourceService;
@@ -52,7 +52,7 @@ public class DatasourceController {
     @ApiOperation("列出已登记的数据源，用于左侧树")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public CustomResponse<? extends Object> listDatasources() {
-        return new CustomResponse<List<Datasource>>(0, datasourceService.listUndeletedDatasources());
+        return new CustomResponse<List<MetaDatasource>>(0, datasourceService.listUndeletedDatasources());
     }
 	
 	

@@ -2,10 +2,12 @@ package cn.edu.njfu.simple.sql.metadata.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity(name = "field")
 public class Field {
     
     @Id

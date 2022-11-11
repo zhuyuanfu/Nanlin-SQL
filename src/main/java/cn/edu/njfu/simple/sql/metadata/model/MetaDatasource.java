@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "datasource")
-public class Datasource {
+@Entity(name = "meta_datasource")
+public class MetaDatasource {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

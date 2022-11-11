@@ -2,11 +2,13 @@ package cn.edu.njfu.simple.sql.metadata.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class Database {
+@Entity(name = "meta_database")
+public class MetaDatabase {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

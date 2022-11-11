@@ -2,11 +2,11 @@ package cn.edu.njfu.simple.sql.service;
 
 import java.util.List;
 
-import cn.edu.njfu.simple.sql.metadata.model.Database;
+import cn.edu.njfu.simple.sql.metadata.model.MetaDatabase;
 
 public interface DatabaseService {
 
-    List<Database> listUndeletedDatabases();
+    List<MetaDatabase> listUndeletedDatabases();
     
     Boolean falseDeleteById(Long id);
 }

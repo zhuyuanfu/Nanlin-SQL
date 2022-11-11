@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.edu.njfu.simple.sql.metadata.model.Datasource;
+import cn.edu.njfu.simple.sql.metadata.model.MetaDatasource;
 import cn.edu.njfu.simple.sql.metadata.model.DatasourceType;
 import cn.edu.njfu.simple.sql.model.CustomResponse;
 import cn.edu.njfu.simple.sql.service.DatasourceService;
@@ -31,8 +31,8 @@ public class MetadataMiningController {
      * @return 采集元数据的结果
      */
     @ApiOperation("手动发起一次对元数据的全量采集")
-    @RequestMapping(value = "/mining", method = RequestMethod.POST)
-    public CustomResponse<String> listSupportedDatasources() {
+    @RequestMapping(value = "/mining/all", method = RequestMethod.POST)
+    public CustomResponse<String> mineCompletely() {
         return metadataMiningService.mineCompletely();
     }
 }
