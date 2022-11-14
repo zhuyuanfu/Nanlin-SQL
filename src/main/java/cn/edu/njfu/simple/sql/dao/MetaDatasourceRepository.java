@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import cn.edu.njfu.simple.sql.metadata.model.MetaDatasource;
 
-public interface DatasourceRepository extends CrudRepository<MetaDatasource, Long>{
+public interface MetaDatasourceRepository extends CrudRepository<MetaDatasource, Long>{
 	
     @Query("select t from meta_datasource t where t.isDeleted = false")
     List<MetaDatasource> listUndeletedDatasources();

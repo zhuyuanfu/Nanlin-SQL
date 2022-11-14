@@ -15,5 +15,6 @@ public enum DataType {
     DATETIME,
     EPOCHTIMESTAMP,
     
+    UNKNOWN,
     
 }

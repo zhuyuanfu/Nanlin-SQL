@@ -8,5 +8,5 @@ public interface DatabaseService {
 
     List<MetaDatabase> listUndeletedDatabases();
     
-    Boolean falseDeleteById(Long id);
+    Integer falseDeleteById(Long id);
 }

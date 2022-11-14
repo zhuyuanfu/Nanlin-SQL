@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.edu.njfu.simple.sql.dao.DatasourceRepository;
+import cn.edu.njfu.simple.sql.dao.MetaDatasourceRepository;
 import cn.edu.njfu.simple.sql.metadata.model.MetaDatasource;
 import cn.edu.njfu.simple.sql.service.DatasourceService;
 
@@ -13,7 +13,7 @@ import cn.edu.njfu.simple.sql.service.DatasourceService;
 public class DatasourceServiceImpl implements DatasourceService {
 
     @Autowired
-    private DatasourceRepository datasourceRepository;
+    private MetaDatasourceRepository datasourceRepository;
     
     @Override
     public List<MetaDatasource> listUndeletedDatasources() {

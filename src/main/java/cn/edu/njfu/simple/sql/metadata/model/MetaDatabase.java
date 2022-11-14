@@ -13,7 +13,7 @@ public class MetaDatabase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long dataSourceId;
+    private Long datasourceId;
     private String name;
     private String chineseName;
     private String comment;
@@ -28,11 +28,11 @@ public class MetaDatabase {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getDataSourceId() {
-        return dataSourceId;
+    public Long getDatasourceId() {
+        return datasourceId;
     }
-    public void setDataSourceId(Long dataSourceId) {
-        this.dataSourceId = dataSourceId;
+    public void setDatasourceId(Long dataSourceId) {
+        this.datasourceId = dataSourceId;
     }
     public String getName() {
         return name;

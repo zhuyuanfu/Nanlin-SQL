@@ -7,14 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "field")
-public class Field {
+@Entity(name = "meta_table")
+public class MetaTable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long tableId;
-    private DataType dataType;
+    private Long databaseId;
     private String name;
     private String chineseName;
     private String comment;
@@ -28,17 +27,11 @@ public class Field {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getTableId() {
-        return tableId;
+    public Long getDatabaseId() {
+        return databaseId;
     }
-    public void setTableId(Long tableId) {
-        this.tableId = tableId;
-    }
-    public DataType getDataType() {
-        return dataType;
-    }
-    public void setDataType(DataType dataType) {
-        this.dataType = dataType;
+    public void setDatabaseId(Long databaseId) {
+        this.databaseId = databaseId;
     }
     public String getName() {
         return name;
@@ -58,17 +51,17 @@ public class Field {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    public LocalDateTime getCreatedTime() {
+    public LocalDateTime getCreated_time() {
         return createdTime;
     }
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
+    public void setCreatedTime(LocalDateTime created_time) {
+        this.createdTime = created_time;
     }
     public LocalDateTime getUpdatedTime() {
         return updatedTime;
     }
-    public void setUpdatedTime(LocalDateTime updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setUpdatedTime(LocalDateTime updated_time) {
+        this.updatedTime = updated_time;
     }
     public Boolean getIsDeleted() {
         return isDeleted;

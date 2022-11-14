@@ -33,6 +33,6 @@ public class MetadataMiningController {
     @ApiOperation("手动发起一次对元数据的全量采集")
     @RequestMapping(value = "/mining/all", method = RequestMethod.POST)
     public CustomResponse<String> mineCompletely() {
-        return metadataMiningService.mineCompletely();
+        return metadataMiningService.mineAndSaveCompletely();
     }
 }

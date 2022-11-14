@@ -14,9 +14,11 @@ import org.slf4j.LoggerFactory;
 
 import cn.edu.njfu.simple.sql.metadata.model.MetaDatabase;
 import cn.edu.njfu.simple.sql.metadata.model.MetaDatasource;
+import cn.edu.njfu.simple.sql.metadata.model.DataType;
 import cn.edu.njfu.simple.sql.metadata.model.DatasourceType;
-import cn.edu.njfu.simple.sql.metadata.model.Field;
-import cn.edu.njfu.simple.sql.metadata.model.Table;
+import cn.edu.njfu.simple.sql.metadata.model.MetaField;
+import cn.edu.njfu.simple.sql.metadata.model.MetaTable;
+import cn.edu.njfu.simple.sql.model.CustomResponse;
 
 public class MySQLMetadataMiner implements MetadataMiner {
 
@@ -43,10 +45,9 @@ public class MySQLMetadataMiner implements MetadataMiner {
             ResultSet rs = metadata.getCatalogs();
             LocalDateTime now = LocalDateTime.now();
             while (rs.next()) {
-                String databaseName = rs.getString("TABLE_CAT");
                 MetaDatabase database = new MetaDatabase();
-                database.setDataSourceId(datasource.getId());
-                database.setName(databaseName);
+                database.setDatasourceId(datasource.getId());
+                database.setName(rs.getString("TABLE_CAT"));
                 database.setIsDeleted(false);
                 database.setCreatedTime(now);
                 database.setUpdatedTime(now);
@@ -54,20 +55,71 @@ public class MySQLMetadataMiner implements MetadataMiner {
             }
         } catch (SQLException e) {
             logger.error("Opening connection to database failed. ", e);
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
+
+    
+    // mysql的话，挖不出performance_schema，不知什么原因
+    @Override
+    public List<MetaTable> mineTables(MetaDatabase database) {
+        List<MetaTable> result = new ArrayList<MetaTable>();
+        try {
+            if (conn != null && !conn.isClosed()) {
+                openConnection();
+            }
+            ResultSet rs = metadata.getTables(database.getName(), null, "%", new String[] {"TABLE"});
+            LocalDateTime now = LocalDateTime.now();
+            while (rs.next()) {
+                MetaTable table = new MetaTable();
+                table.setDatabaseId(database.getId());
+                table.setName(rs.getString("TABLE_NAME"));
+                table.setIsDeleted(false);
+                table.setCreatedTime(now);
+                table.setUpdatedTime(now);
+                result.add(table);
+            }
+        } catch (SQLException e) {
+            logger.error("Opening connection to database failed. ", e);
+        } finally {
+            closeConnection();
         }
         return result;
     }
 
     @Override
-    public List<Table> mineTables(MetaDatabase database) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<Field> mineFields(MetaDatabase database, Table table) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<MetaField> mineFields(MetaDatabase database, MetaTable table) {
+        List<MetaField> result = new ArrayList<MetaField>();
+        try {
+            if (conn != null && !conn.isClosed()) {
+                openConnection();
+            }
+            ResultSet rs = metadata.getColumns(database.getName(), null, table.getName(), null);
+            LocalDateTime now = LocalDateTime.now();
+            while (rs.next()) {
+                MetaField field = new MetaField();
+                field.setTableId(table.getId());
+                field.setName(rs.getString("COLUMN_NAME"));
+                DataType type = null;
+                try {
+                    type = DataType.valueOf(rs.getString("COLUMN_TYPE"));
+                } catch (Exception e) {
+                    type = DataType.UNKNOWN;
+                }
+                field.setDataType(type);
+                field.setIsDeleted(false);
+                field.setCreatedTime(now);
+                field.setUpdatedTime(now);
+                result.add(field);
+            }
+        } catch (SQLException e) {
+            logger.error("Opening connection to database failed. ", e);
+        } finally {
+            closeConnection();
+        }
+        return result;
     }
     
     private void openConnection() {

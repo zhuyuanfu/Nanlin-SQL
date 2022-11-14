@@ -1,14 +1,9 @@
-create table datasource (
+create table `meta_database` (
 	id bigint primary key not null auto_increment,
+	data_source_id bigint not null,
 	name varchar(32),
 	chinese_name varchar(32),
 	comment varchar(128),
-	datasource_type varchar(32),
-	host varchar(32),
-	port varchar(32),
-	driver_class varchar(128),
-	connection_account varchar(32),
-	connection_password varchar(32),
 	created_time timestamp default now(),
 	updated_time timestamp default now(),
 	is_deleted tinyint default false

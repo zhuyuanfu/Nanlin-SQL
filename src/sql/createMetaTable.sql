@@ -1,6 +1,6 @@
-create table `database` (
+create table `meta_table` (
 	id bigint primary key not null auto_increment,
-	data_source_id bigint not null,
+	database_id bigint not null,
 	name varchar(32),
 	chinese_name varchar(32),
 	comment varchar(128),

@@ -6,7 +6,7 @@ import cn.edu.njfu.simple.sql.metadata.model.DatasourceType;
 public class MetadataMinerFactory {
 
     public static MetadataMiner getMetadatMiner(MetaDatasource datasource) {
-        if (datasource == null) throw new NullPointerException("datasource is null");
+        if (datasource == null) throw new NullPointerException("argument datasource is null");
         
         DatasourceType datasourceType = datasource.getDatasourceType();
         

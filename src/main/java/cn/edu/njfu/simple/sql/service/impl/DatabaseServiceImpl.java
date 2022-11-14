@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.edu.njfu.simple.sql.dao.DatabaseRepository;
+import cn.edu.njfu.simple.sql.dao.MetaDatabaseRepository;
 import cn.edu.njfu.simple.sql.metadata.model.MetaDatabase;
 import cn.edu.njfu.simple.sql.service.DatabaseService;
 
@@ -13,7 +13,7 @@ import cn.edu.njfu.simple.sql.service.DatabaseService;
 public class DatabaseServiceImpl implements DatabaseService {
 
     @Autowired
-    private DatabaseRepository databaseRepository;
+    private MetaDatabaseRepository databaseRepository;
     
     @Override
     public List<MetaDatabase> listUndeletedDatabases() {
@@ -22,7 +22,7 @@ public class DatabaseServiceImpl implements DatabaseService {
 
 
     @Override
-    public Boolean falseDeleteById(Long id) {
+    public Integer falseDeleteById(Long id) {
         return databaseRepository.falseDeleteById(id);
     }
     
