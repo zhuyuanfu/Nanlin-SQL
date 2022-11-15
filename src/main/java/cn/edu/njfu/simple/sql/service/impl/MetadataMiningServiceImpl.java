@@ -1,5 +1,6 @@
 package cn.edu.njfu.simple.sql.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class MetadataMiningServiceImpl implements MetadataMiningService {
         List<MetaDatabase> minedDatabases =  miner.mineDatabases();
         List<MetaDatabase> allDatabases = databaseRepository.findAll();
         
-        // 将从数据库里捞出来的metaDB分成
+        // 将从数据库里捞出来的metaDB分成“已被逻辑删除的”和“没被删除的”两类
         List<MetaDatabase> existingDatabases = new ArrayList<MetaDatabase>();
         List<MetaDatabase> falseDeletedDatabases = new ArrayList<MetaDatabase>();
         for (MetaDatabase database: allDatabases) {
@@ -138,7 +139,10 @@ public class MetadataMiningServiceImpl implements MetadataMiningService {
             tableRepository.falseDeleteById(t.getId());
         }
         for (MetaTable t: toBeRestoredTables) {
-            tableRepository.restoreById(t.getId());
+            //tableRepository.restoreById(t.getId());
+            t.setIsDeleted(false);
+            t.setUpdatedTime(LocalDateTime.now());
+            tableRepository.save(t);
         }
     }
 
@@ -146,7 +150,7 @@ public class MetadataMiningServiceImpl implements MetadataMiningService {
     public void mineAndSaveFields(MetaDatasource datasource, MetaDatabase database, MetaTable table) {
         MetadataMiner miner = MetadataMinerFactory.getMetadatMiner(datasource);
         List<MetaField> minedFields = miner.mineFields(database, table);
-        List<MetaField> allFields = fieldRepository.listUndeletedFieldsByTableId(table.getId());
+        List<MetaField> allFields = fieldRepository.listAllFieldsByTableId(table.getId());
         
         List<MetaField> existingFields = new ArrayList<MetaField>();
         List<MetaField> falseDeletedFields = new ArrayList<MetaField>();

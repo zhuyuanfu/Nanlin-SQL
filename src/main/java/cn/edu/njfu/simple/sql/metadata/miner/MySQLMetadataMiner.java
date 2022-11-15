@@ -39,7 +39,7 @@ public class MySQLMetadataMiner implements MetadataMiner {
     public List<MetaDatabase> mineDatabases() {
         List<MetaDatabase> result = new ArrayList<MetaDatabase>(); 
         try {
-            if (conn != null && !conn.isClosed()) {
+            if (conn == null || conn.isClosed()) {
                 openConnection();
             }
             ResultSet rs = metadata.getCatalogs();
@@ -67,7 +67,7 @@ public class MySQLMetadataMiner implements MetadataMiner {
     public List<MetaTable> mineTables(MetaDatabase database) {
         List<MetaTable> result = new ArrayList<MetaTable>();
         try {
-            if (conn != null && !conn.isClosed()) {
+            if (conn == null || conn.isClosed()) {
                 openConnection();
             }
             ResultSet rs = metadata.getTables(database.getName(), null, "%", new String[] {"TABLE"});
@@ -93,7 +93,7 @@ public class MySQLMetadataMiner implements MetadataMiner {
     public List<MetaField> mineFields(MetaDatabase database, MetaTable table) {
         List<MetaField> result = new ArrayList<MetaField>();
         try {
-            if (conn != null && !conn.isClosed()) {
+            if (conn == null || conn.isClosed()) {
                 openConnection();
             }
             ResultSet rs = metadata.getColumns(database.getName(), null, table.getName(), null);

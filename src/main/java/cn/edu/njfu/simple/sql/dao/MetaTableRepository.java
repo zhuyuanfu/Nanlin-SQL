@@ -17,7 +17,6 @@ public interface MetaTableRepository extends CrudRepository<MetaTable, Long>{
     @Query("select t from meta_table t where t.isDeleted = false and t.databaseId = :id")
     List<MetaTable> listUndeletedTablesByDatabaseId(@Param("id") Long id);
 
-    
     @Query("select t from meta_table t where t.databaseId = :id")
     List<MetaTable> listAllTablesByDatabaseId(@Param("id") Long id);
     

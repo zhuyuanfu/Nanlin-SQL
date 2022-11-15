@@ -17,6 +17,9 @@ public interface MetaFieldRepository extends CrudRepository<MetaField, Long>{
     @Query("select t from meta_field t where t.isDeleted = false and t.tableId = :id")
     List<MetaField> listUndeletedFieldsByTableId(@Param("id")Long id);
     
+    @Query("select t from meta_field t where t.tableId = :id")
+    List<MetaField> listAllFieldsByTableId(@Param("id")Long id);
+    
     @Transactional
     @Modifying
     @Query("update meta_field t set t.isDeleted = true where t.id = :id")
