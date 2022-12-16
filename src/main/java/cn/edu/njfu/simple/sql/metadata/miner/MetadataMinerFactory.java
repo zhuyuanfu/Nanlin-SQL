@@ -16,7 +16,7 @@ public class MetadataMinerFactory {
             case ORACLE:
                 break;
             default:
-                return null;
+                break;
         }
         return null;
     }

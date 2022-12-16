@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.edu.njfu.simple.sql.metadata.model.CrumbMetaObject;
+import cn.edu.njfu.simple.sql.metadata.service.MetadataService;
 import cn.edu.njfu.simple.sql.model.CustomResponse;
 import cn.edu.njfu.simple.sql.service.MetadataMiningService;
-import cn.edu.njfu.simple.sql.service.MetadataService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController

@@ -1,4 +1,4 @@
-package cn.edu.njfu.simple.sql.service;
+package cn.edu.njfu.simple.sql.metadata.service;
 
 import java.util.List;
 
